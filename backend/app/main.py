@@ -1,4 +1,8 @@
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
+from sqlalchemy import text
+from sqlalchemy.orm import Session
+
+from app.database.dependencies import get_db
 
 app = FastAPI(
     title="EngiSense AI API",
@@ -16,7 +20,10 @@ def root():
 
 
 @app.get("/health")
-def health_check():
+def health_check(db: Session = Depends(get_db)):
+    db.execute(text("SELECT 1"))
+
     return {
         "status": "healthy",
+        "database": "connected",
     }
