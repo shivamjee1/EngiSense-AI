@@ -6,10 +6,25 @@ from app.api.analysis import router as analysis_router
 
 from app.database.dependencies import get_db
 
+from pathlib import Path
+
+from fastapi.staticfiles import StaticFiles
+
 app = FastAPI(
     title="EngiSense AI API",
     description="Engineering Intelligence Platform API",
     version="0.1.0",
+)
+
+project_root = Path(__file__).resolve().parents[2]
+charts_directory = project_root / "data" / "charts"
+
+charts_directory.mkdir(parents=True, exist_ok=True)
+
+app.mount(
+    "/charts",
+    StaticFiles(directory=charts_directory),
+    name="charts",
 )
 
 app.include_router(auth_router)

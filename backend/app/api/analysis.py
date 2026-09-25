@@ -3,6 +3,7 @@ from pathlib import Path
 from fastapi import APIRouter, HTTPException
 
 from app.analysis.pipeline import analyze_csv
+from app.analysis.visualization_service import generate_engineering_charts
 
 router = APIRouter(
     prefix="/analysis",
@@ -24,6 +25,32 @@ def analyze_thermal_test():
     try:
         result = analyze_csv(str(file_path))
         return result
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        )
+
+
+@router.get("/thermal-test/charts")
+def generate_thermal_test_charts():
+    project_root = Path(__file__).resolve().parents[3]
+    file_path = project_root / "data" / "thermal_test.csv"
+
+    if not file_path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Thermal test dataset not found",
+        )
+
+    try:
+        charts = generate_engineering_charts(str(file_path))
+
+        return {
+            "dataset": "thermal_test.csv",
+            "charts": charts,
+        }
 
     except Exception as exc:
         raise HTTPException(
