@@ -33,6 +33,8 @@ Thumbs.db
 # Data
 data/*
 !data/.gitkeep
+!data/thermal_test.csv
+data/charts/
 
 # Python coverage
 .coverage
