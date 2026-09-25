@@ -1,5 +1,5 @@
-from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import Integer, String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.session import Base
 
@@ -8,6 +8,7 @@ class User(Base):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(
+        Integer,
         primary_key=True,
         index=True,
     )
@@ -26,7 +27,12 @@ class User(Base):
 
     role: Mapped[str] = mapped_column(
         String(50),
-        nullable=False,
         default="user",
-        server_default="user",
+        nullable=False,
+    )
+
+    datasets = relationship(
+        "Dataset",
+        back_populates="owner",
+        cascade="all, delete-orphan",
     )

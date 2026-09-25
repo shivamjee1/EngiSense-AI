@@ -1,0 +1,402 @@
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload                                     
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [21996] using WatchFiles
+INFO:     Started server process [27940]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:8654 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8654 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5976 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6972 - "POST /analysis/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10217 - "POST /analysis/2 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:2253 - "POST /analysis/3 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [27940]
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21996, pipe_handle=596)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 15, in <module>
+    from typing import IO, Any, Literal
+  File "C:\Python314\Lib\typing.py", line 3610, in <module>
+    class TextIO(IO[str]):
+    ...<31 lines>...
+            pass
+  File "<frozen importlib._bootstrap>", line 466, in _lock_unlock_module
+KeyboardInterrupt
+INFO:     Started server process [8516]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:8027 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8027 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:13617 - "GET /analysis/1/results/1 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8516]
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ INFO:     Started server process [4000]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4000]
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21996, pipe_handle=856)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 34, in <module>
+    import ssl
+  File "C:\Python314\Lib\ssl.py", line 263, in <module>
+    import base64        # for DER-to-PEM translation
+    ^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 845, in get_code
+  File "<frozen importlib._bootstrap_external>", line 968, in path_stats
+  File "<frozen importlib._bootstrap_external>", line 152, in _path_stat
+KeyboardInterrupt
+INFO:     Started server process [716]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [716]
+INFO:     Started server process [28100]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28100]
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21996, pipe_handle=856)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 40, in <module>
+    from . import events
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 894, in get_code
+  File "<frozen importlib._bootstrap>", line 494, in _verbose_message
+KeyboardInterrupt
+INFO:     Started server process [27284]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\analysis\visualization.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [27284]
+WARNING:  WatchFiles detected changes in 'app\analysis\visualization.py'. Reloading...
+ INFO:     Started server process [18452]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [18452]
+INFO:     Started server process [11468]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\analysis\heatmap.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11468]
+INFO:     Started server process [26308]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\analysis\heatmap.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26308]
+WARNING:  WatchFiles detected changes in 'app\analysis\heatmap.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21996, pipe_handle=856)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 44, in <module>
+    from . import sslproto
+KeyboardInterrupt
+INFO:     Started server process [24820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\analysis\visualization.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24820]
+INFO:     Started server process [11952]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:9612 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9612 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:1044 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:1364 - "GET /analysis/1/charts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:4836 - "GET /analysis/1/results/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14788 - "GET /charts/temperature_trend.png HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:14788 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:14601 - "GET /charts/temperature_trend.png HTTP/1.1" 404 Not Found
+WARNING:  WatchFiles detected changes in 'app\main.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11952]
+WARNING:  WatchFiles detected changes in 'app\main.py'. Reloading...
+ INFO:     Started server process [16728]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [16728]
+WARNING:  WatchFiles detected changes in 'app\main.py'. Reloading...
+ INFO:     Started server process [26524]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26524]
+INFO:     Started server process [30308]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:12626 - "GET /charts/temperature_trend.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6387 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8838 - "POST /datasets/upload HTTP/1.1" 201 Created
+INFO:     127.0.0.1:6989 - "GET /datasets/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8428 - "GET /analysis/thermal-test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7350 - "GET /analysis/thermal-test/charts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5081 - "GET /analysis/thermal-test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3776 - "POST /analysis/3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6259 - "GET /charts/temperature_trend.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14530 - "GET /analysis/3/results/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14961 - "GET /analysis/3/charts HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [30308]
+INFO:     Started server process [21208]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\api\analysis.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21208]
+INFO:     Started server process [22444]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:8186 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8186 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8186 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8186 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3204 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3204 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:13520 - "POST /analysis/3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:1695 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5104 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10631 - "GET /analysis/3/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2680 - "GET /analysis/3/charts HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:7350 - "GET /analysis/1/charts HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:7879 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7879 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7879 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7879 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7879 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7879 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5836 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2450 - "GET /datasets/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3483 - "DELETE /datasets/3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6983 - "DELETE /datasets/4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5144 - "GET /datasets/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7177 - "POST /analysis/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:12899 - "GET /analysis/1/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:4475 - "GET /analysis/1/results/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8346 - "GET /analysis/1/results/2 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:5764 - "GET /analysis/1/results/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6337 - "GET /analysis/1/charts HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\analysis\pipeline.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22444]
+INFO:     Started server process [16464]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:8059 - "GET /analysis/1/results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5635 - "GET /analysis/1/results HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [16464]
+INFO:     Stopping reloader process [21996]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> cd ..
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI> npm create vite@latest frontend -- -- template react
+Need to install the following packages:
+create-vite@9.2.1
+Ok to proceed? (y) y
+
+> npx
+> create-vite frontend -- template react
+
+│
+◇  Select a framework:
+│  React
+│
+◇  Select a variant:
+│  JavaScript + React Compiler
+│
+◇  Which linter to use?
+│  ESLint
+│
+◇  Install with npm and start now?
+│  Yes
+│
+◇  Scaffolding project in C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\frontend...
+│
+◇  Installing dependencies with npm...
+
+added 145 packages, and audited 146 packages in 1m
+
+31 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+│
+◇  Starting dev server...
+
+> frontend@0.0.0 dev
+> vite
+
+
+  VITE v8.3.1  ready in 10758 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI> cd frontend
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\frontend> mkdir src\api
+>> mkdir src\components
+>> mkdir src\context
+>> mkdir src\hooks
+>> mkdir src\layouts
+>> mkdir src\pages
+>> mkdir src\services
+>> mkdir src\utils
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\frontend\src
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+d-----        25-09-2026     22:19                api                                                                                                                                                   
+d-----        25-09-2026     22:19                components                                                                                                                                            
+d-----        25-09-2026     22:19                context                                                                                                                                               
+d-----        25-09-2026     22:19                hooks                                                                                                                                                 
+d-----        25-09-2026     22:19                layouts                                                                                                                                               
+d-----        25-09-2026     22:19                pages                                                                                                                                                 
+d-----        25-09-2026     22:19                services                                                                                                                                              
+d-----        25-09-2026     22:19                utils                                                                                                                                                 
+
+
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\frontend> npm run dev
+
+> frontend@0.0.0 dev
+> vite
+
+
+  VITE v8.3.1  ready in 1275 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+10:26:06 pm [vite] Internal server error: Failed to resolve import "react-router-dom" from "src/App.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/SHIVAM KUMAR/target/PROJECT/EngiSense-AI/frontend/src/App.jsx:1:45
+  1  |  import { c as _c } from "react/compiler-runtime";
+  2  |  import { BrowserRouter, Routes, Route } from "react-router-dom";
+     |                                                ^
+  3  |  import Login from "./pages/Login";
+  4  |  import Register from "./pages/Register";
+      at TransformPluginContext._formatLog (file:///C:/Users/SHIVAM%20KUMAR/target/PROJECT/EngiSense-AI/frontend/node_modules/vite/dist/node/chunks/node.js:8736:39)
+      at TransformPluginContext.error (file:///C:/Users/SHIVAM%20KUMAR/target/PROJECT/EngiSense-AI/frontend/node_modules/vite/dist/node/chunks/node.js:8733:14)
+      at normalizeUrl (file:///C:/Users/SHIVAM%20KUMAR/target/PROJECT/EngiSense-AI/frontend/node_modules/vite/dist/node/chunks/node.js:26423:18)
+      at async file:///C:/Users/SHIVAM%20KUMAR/target/PROJECT/EngiSense-AI/frontend/node_modules/vite/dist/node/chunks/node.js:26493:30
+      at async Promise.all (index 1)
+      at async TransformPluginContext.transform (file:///C:/Users/SHIVAM%20KUMAR/target/PROJECT/EngiSense-AI/frontend/node_modules/vite/dist/node/chunks/node.js:26459:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/SHIVAM%20KUMAR/target/PROJECT/EngiSense-AI/frontend/node_modules/vite/dist/node/chunks/node.js:8515:14)
+      at async loadAndTransform (file:///C:/Users/SHIVAM%20KUMAR/target/PROJECT/EngiSense-AI/frontend/node_modules/vite/dist/node/chunks/node.js:19998:26)
+10:26:06 pm [vite] (client) Pre-transform error: Failed to resolve import "react-router-dom" from "src/App.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/SHIVAM KUMAR/target/PROJECT/EngiSense-AI/frontend/src/App.jsx:1:45
+  1  |  import { c as _c } from "react/compiler-runtime";
+  2  |  import { BrowserRouter, Routes, Route } from "react-router-dom";
+     |                                                ^
+  3  |  import Login from "./pages/Login";
+  4  |  import Register from "./pages/Register";
+10:26:06 pm [vite] (client) Pre-transform error: Failed to resolve import "react-router-dom" from "src/App.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: C:/Users/SHIVAM KUMAR/target/PROJECT/EngiSense-AI/frontend/src/App.jsx:1:45
+  1  |  import { c as _c } from "react/compiler-runtime";
+  2  |  import { BrowserRouter, Routes, Route } from "react-router-dom";
+     |                                                ^
+  3  |  import Login from "./pages/Login";
+  4  |  import Register from "./pages/Register"; (x2)
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense
