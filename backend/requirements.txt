@@ -18,3 +18,8 @@ pandas
 numpy
 matplotlib
 seaborn
+
+pypdf
+python-docx
+
+langchain-text-splitters
