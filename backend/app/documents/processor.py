@@ -7,11 +7,7 @@ from app.models.document import Document
 from app.models.document_chunk import DocumentChunk
 
 
-def process_document(
-    document: Document,
-    db: Session,
-) -> int:
-
+def process_document(document: Document, db: Session) -> int:
     text = extract_document_text(
         document.file_path,
         document.file_type,
@@ -20,9 +16,13 @@ def process_document(
     chunks = chunk_document_text(text)
 
     embedding_service = EmbeddingService()
+    embeddings = embedding_service.generate_embeddings(chunks)
 
-    embeddings = embedding_service.generate_embeddings(
-        chunks
+    # Remove previously generated chunks for this document.
+    db.query(DocumentChunk).filter(
+        DocumentChunk.document_id == document.id
+    ).delete(
+        synchronize_session=False
     )
 
     document_chunks = []
