@@ -1,0 +1,35 @@
+services:
+  db:
+    image: pgvector/pgvector:pg18
+    container_name: engisense-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: engisense
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+  backend:
+    build:
+      context: ./backend
+    container_name: engisense-backend
+    restart: unless-stopped
+    depends_on:
+      - db
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/engisense
+      ENVIRONMENT: production
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/data/documents:/app/data/documents
+      - ./backend/data/uploads:/app/data/uploads
+      - ./backend/data/charts:/app/data/charts
+
+volumes:
+  postgres_data: 

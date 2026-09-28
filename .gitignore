@@ -35,7 +35,9 @@ data/*
 !data/.gitkeep
 !data/thermal_test.csv
 data/charts/
-backend/data/uploads
+backend/data/documents/
+backend/data/uploads/
+backend/data/charts/
 
 # Python coverage
 .coverage

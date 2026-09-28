@@ -1,7 +1,7 @@
 """add document and document chunk models
 
 Revision ID: 3f4bf8938cca
-Revises: 2dce4886d862
+Revises: 668cabe480a1
 Create Date: 2026-09-26 03:09:17.038607
 
 """
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = '3f4bf8938cca'
-down_revision: Union[str, Sequence[str], None] = '2dce4886d862'
+down_revision: Union[str, Sequence[str], None] = '668cabe480a1'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
