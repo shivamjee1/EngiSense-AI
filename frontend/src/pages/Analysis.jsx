@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { useAuth } from "../context/AuthContext";
+import ReactMarkdown from "react-markdown";
+
 
 import {
   analyzeDataset,
   getAnalysisResults,
   getAnalysisResult,
 } from "../services/analysisService";
+
+import { analyzeUnifiedAI } from "../services/unifiedAIService";
+import { getDocuments } from "../services/documentService";
 
 const API_BASE_URL = "http://127.0.0.1:8000";
 
@@ -21,6 +26,13 @@ function Analysis() {
   const [analyzing, setAnalyzing] = useState(false);
 
   const [error, setError] = useState("");
+  const [aiQuestion, setAiQuestion] = useState("");
+  const [aiResult, setAiResult] = useState(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState("");
+  const [documents, setDocuments] = useState([]);
+  const [selectedDocumentId, setSelectedDocumentId] = useState("");
+  const [documentsLoading, setDocumentsLoading] = useState(false);
 
   // --------------------------------
   // Load latest saved analysis
@@ -102,6 +114,35 @@ function Analysis() {
     }
   }, [id, token]);
 
+  useEffect(() => {
+    const loadDocuments = async () => {
+      try {
+        setDocumentsLoading(true);
+        setAiError("");
+
+        const data = await getDocuments(token);
+
+        setDocuments(data.documents || []);
+      } catch (err) {
+        console.error("Failed to load documents:", err);
+
+        const detail = err.response?.data?.detail;
+
+        setAiError(
+          typeof detail === "string"
+            ? detail
+            : "Failed to load documents."
+        );
+      } finally {
+        setDocumentsLoading(false);
+      }
+    };
+
+    if (token) {
+      loadDocuments();
+    }
+  }, [token]);
+
   // --------------------------------
   // Run new analysis
   // --------------------------------
@@ -145,6 +186,48 @@ function Analysis() {
 
     } finally {
       setAnalyzing(false);
+    }
+  };
+  
+  // --------------------------------
+  // Unified AI
+  // --------------------------------
+  const handleUnifiedAI = async () => {
+    if (!aiQuestion.trim()) {
+      setAiError("Please enter a question.");
+      return;
+    }
+
+    if (!selectedDocumentId) {
+      setAiError("Please select a technical document.");
+      return;
+    }
+
+    try {
+      setAiLoading(true);
+      setAiError("");
+      setAiResult(null);
+
+      const data = await analyzeUnifiedAI(
+        id,
+        selectedDocumentId,
+        aiQuestion,
+        token
+      );
+
+      setAiResult(data);
+    } catch (err) {
+      console.error("Unified AI error:", err);
+
+      const detail = err.response?.data?.detail;
+
+      setAiError(
+        typeof detail === "string"
+          ? detail
+          : "Unified AI analysis failed."
+      );
+    } finally {
+      setAiLoading(false);
     }
   };
 
@@ -260,7 +343,156 @@ function Analysis() {
         </button>
 
       </div>
+      
+      //somwthing new
+      {/* Unified AI */}
 
+      <div
+        style={{
+          border: "1px solid #ddd",
+          borderRadius: "10px",
+          padding: "25px",
+          marginBottom: "25px",
+        }}
+      >
+        <h2>EngiSense AI</h2>
+
+        <p style={{ color: "#666" }}>
+          Ask an engineering question about this dataset and
+          supporting technical documentation.
+        </p>
+        
+        <div style={{ marginTop: "20px" }}>
+          <label
+            htmlFor="ai-document"
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              fontWeight: "600",
+            }}
+          >
+            Technical Document
+          </label>
+
+          <select
+            id="ai-document"
+            value={selectedDocumentId}
+            onChange={(e) =>
+              setSelectedDocumentId(e.target.value)
+            }
+            disabled={documentsLoading || aiLoading}
+            style={{
+              width: "100%",
+              padding: "12px",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+              background: "#fff",
+              boxSizing: "border-box",
+            }}
+          >
+            <option value="">
+              {documentsLoading
+                ? "Loading documents..."
+                : "Select a technical document"}
+            </option>
+
+            {documents.map((document) => (
+              <option
+                key={document.id}
+                value={document.id}
+              >
+                {document.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <textarea
+          value={aiQuestion}
+          onChange={(e) => setAiQuestion(e.target.value)}
+          placeholder="Example: Is the vibration level statistically abnormal?"
+          rows={4}
+          style={{
+            width: "100%",
+            marginTop: "15px",
+            padding: "12px",
+            border: "1px solid #ccc",
+            borderRadius: "6px",
+            resize: "vertical",
+            boxSizing: "border-box",
+          }}
+        />
+
+        <button
+          onClick={handleUnifiedAI}
+          disabled={aiLoading || !aiQuestion.trim()}
+          style={{
+            marginTop: "15px",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "6px",
+            background: "#111",
+            color: "#fff",
+            cursor:
+              aiLoading || !aiQuestion.trim()
+                ? "not-allowed"
+                : "pointer",
+            opacity:
+              aiLoading || !aiQuestion.trim()
+                ? 0.6
+                : 1,
+          }}
+        >
+          {aiLoading ? "Thinking..." : "Ask EngiSense AI"}
+        </button>
+
+        {aiError && (
+          <div
+            style={{
+              marginTop: "15px",
+              padding: "12px",
+              borderRadius: "6px",
+              background: "#ffebee",
+              color: "#c62828",
+            }}
+          >
+            {aiError}
+          </div>
+        )}
+
+        {aiResult && (
+          <div
+            style={{
+              marginTop: "25px",
+              padding: "20px",
+              background: "#f7f7f7",
+              borderRadius: "8px",
+            }}
+          >
+            <h3>AI Engineering Assessment</h3>
+
+            <p>
+              <strong>Tool used:</strong>{" "}
+              {aiResult.tool_used}
+            </p>
+
+            <div
+              style={{
+                marginTop: "15px",
+                background: "#fff",
+                padding: "15px",
+                borderRadius: "6px",
+                whiteSpace: "pre-wrap",
+                lineHeight: "1.6",
+              }}
+            >
+              <ReactMarkdown>
+                {aiResult.answer}
+              </ReactMarkdown>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Error */}
 

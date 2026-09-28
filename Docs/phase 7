@@ -1,0 +1,1684 @@
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> mkdir app\ai
+>> mkdir app\ai\tools
+>> 
+>> New-Item app\ai\__init__.py -ItemType File
+>> New-Item app\ai\tools\__init__.py -ItemType File
+>> New-Item app\ai\tools\base.py -ItemType File
+>> New-Item app\ai\tools\dataset_summary.py -ItemType File
+>> New-Item app\ai\tools\statistics.py -ItemType File
+>> New-Item app\ai\tools\correlation.py -ItemType File
+>> New-Item app\ai\tools\outlier_detection.py -ItemType File
+>> New-Item app\ai\registry.py -ItemType File
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+d-----        26-09-2026     21:39                ai                                                                                                                                                    
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\ai
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+d-----        26-09-2026     21:39                tools                                                                                                                                                 
+-a----        26-09-2026     21:39              0 __init__.py                                                                                                                                           
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\ai\tools
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+-a----        26-09-2026     21:39              0 __init__.py                                                                                                                                           
+-a----        26-09-2026     21:39              0 base.py                                                                                                                                               
+-a----        26-09-2026     21:39              0 dataset_summary.py                                                                                                                                    
+-a----        26-09-2026     21:39              0 statistics.py                                                                                                                                         
+-a----        26-09-2026     21:39              0 correlation.py                                                                                                                                        
+-a----        26-09-2026     21:39              0 outlier_detection.py                                                                                                                                  
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\ai
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+-a----        26-09-2026     21:39              0 registry.py                                                                                                                                           
+
+
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_tools.py
+
+AVAILABLE TOOLS
+================
+{'name': 'dataset_summary', 'description': 'Generate a structural summary of an engineering dataset, including row count, column count, column names, and numeric statistical summary.'}
+{'name': 'statistics', 'description': 'Calculate descriptive statistics for numeric columns in an engineering dataset.'}
+{'name': 'correlation', 'description': 'Calculate the Pearson correlation matrix between numeric variables in an engineering dataset.'}
+{'name': 'outlier_detection', 'description': 'Detect statistical outliers in numeric engineering variables using the IQR method.'}
+
+DATASET SUMMARY
+================
+{'rows': 5, 'columns': 3, 'column_names': ['temperature_c', 'voltage_v', 'current_a'], 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+STATISTICS
+================
+{'rows': 5, 'columns': 3, 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+CORRELATION
+================
+{'temperature_c': {'temperature_c': 1.0, 'voltage_v': 0.995, 'current_a': 0.993}, 'voltage_v': {'temperature_c': 0.995, 'voltage_v': 1.0, 'current_a': 0.996}, 'current_a': {'temperature_c': 0.993, 'voltage_v': 0.996, 'current_a': 1.0}}
+
+OUTLIERS
+================
+{'temperature_c': {'count': 1, 'values': [95]}, 'voltage_v': {'count': 1, 'values': [3.8]}, 'current_a': {'count': 1, 'values': [2.1]}}
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_tool_service.py
+
+AI TOOL SERVICE RESULT
+======================
+{'tool_name': 'dataset_summary', 'dataset_id': 7, 'success': True, 'result': {'rows': 20, 'columns': 6, 'column_names': ['cycle', 'temperature_c', 'voltage_v', 'current_a', 'pressure_kpa', 'vibration_mm_s'], 'numeric_summary': {'cycle': {'count': 20.0, 'mean': 10.5, 'std': 5.916079783099616, 'min': 1.0, '25%': 5.75, '50%': 10.5, '75%': 15.25, 'max': 20.0}, 'temperature_c': {'count': 20.0, 'mean': 33.595, 'std': 3.7283374310810444, 'min': 28.4, '25%': 30.4, '50%': 33.05, '75%': 36.400000000000006, 'max': 40.4}, 'voltage_v': {'count': 20.0, 'mean': 11.65, 'std': 0.29468984587725094, 'min': 11.2, '25%': 11.4, '50%': 11.649999999999999, '75%': 11.9, 'max': 12.1}, 'current_a': {'count': 20.0, 'mean': 2.1425000000000005, 'std': 0.21576973593942322, 'min': 1.82, '25%': 1.9625, '50%': 2.13, '75%': 2.3099999999999996, 'max': 2.52}, 'pressure_kpa': {'count': 20.0, 'mean': 102.15499999999999, 'std': 0.7294374184043624, 'min': 101.1, '25%': 101.57499999999999, '50%': 102.05, '75%': 102.725, 'max': 103.5}, 'vibration_mm_s': {'count': 20.0, 'mean': 2.3200000000000003, 'std': 0.6786984447804256, 'min': 1.4, '25%': 1.775, '50%': 2.25, '75%': 2.8249999999999997, 'max': 3.6}}}}
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_router.py
+
+QUESTION:
+Give me a summary of this dataset.
+SELECTED TOOL:
+dataset_summary
+
+QUESTION:
+What are the average and standard deviation of the parameters?
+SELECTED TOOL:
+statistics
+
+QUESTION:
+Which parameters are correlated?
+SELECTED TOOL:
+correlation
+
+QUESTION:
+Which values are abnormal?
+SELECTED TOOL:
+outlier_detection
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> Give me a summary of this datasetGive me a summary of this dataset.
+Give : The term 'Give' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is 
+correct and try again.
+At line:1 char:1
++ Give me a summary of this datasetGive me a summary of this dataset.
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (Give:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> 
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> SELECTED TOOL:dataset_summary^C
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_router.py                                           
+
+QUESTION:
+Give me a summary of this dataset.
+SELECTED TOOL:
+dataset_summary
+
+QUESTION:
+What are the average and standard deviation of the parameters?
+SELECTED TOOL:
+statistics
+
+QUESTION:
+Which parameters are correlated?
+SELECTED TOOL:
+correlation
+
+QUESTION:
+Which values are abnormal?
+SELECTED TOOL:
+outlier_detection
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload                                      
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [14560] using WatchFiles
+INFO:     Started server process [28416]           
+INFO:     Waiting for application startup.     
+INFO:     Application startup complete.                   
+INFO:     127.0.0.1:5801 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5801 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8348 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9884 - "POST /ai/analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:13307 - "POST /ai/analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9660 - "POST /ai/analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10517 - "POST /ai/analyze HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28416]
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Started server process [24584]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24584]
+INFO:     Started server process [15392]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\documents\rag_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15392]
+WARNING:  WatchFiles detected changes in 'app\documents\rag_service.py'. Reloading...
+ INFO:     Started server process [29244]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [29244]
+INFO:     Started server process [8044]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8044]
+INFO:     Started server process [24148]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_unified_ai.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24148]
+WARNING:  WatchFiles detected changes in 'test_unified_ai.py'. Reloading...
+ INFO:     Started server process [28440]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28440]
+INFO:     Started server process [26544]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26544]
+INFO:     Stopping reloader process [14560]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 2481.04it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'count': 0, 'values': []}, 'temperature_c': {'count': 0, 'values': []}, 'voltage_v': {'count': 0, 'values': []}, 'current_a': {'count': 0, 'values': []}, 'pressure_kpa': {'count': 0, 'values': []}, 'vibration_mm_s': {'count': 0, 'values': []}}
+
+Document Context:
+The engineering documents describe how to detect abnormal values (e.g., using the **OutlierDetectionTool**, statistical analysis, and visualization), but they do not contain any actual vibration measurements from your dataset. Since no vibration data is provided in the context, I cannot determine whether the vibration values are abnormal. To assess that, you would need to run the outlier‑detection and statistical analysis steps outlined in the roadmap on your specific dataset.
+
+Final Answer:
+**Engineering document context**
+
+- The documents explain that abnormal vibration values are identified with the **OutlierDetectionTool** (or similar statistical/visual methods), but they do **not** contain any actual vibration measurements.  
+- Because no vibration data are supplied in the documentation, the documents alone cannot tell you whether any vibration readings are abnormal.  
+
+**Deterministic dataset analysis**
+
+- The outlier‑detection run on your dataset returned  
+
+```json
+'vibration_mm_s': {'count': 0, 'values': []}
+```  
+
+- This indicates that **no vibration measurements were present** (count = 0) for the variable `vibration_mm_s` in the dataset that was analyzed.  
+
+**Conclusion**
+
+Since both the engineering documentation and the dataset analysis show that there are **no vibration values to evaluate**, it is not possible to determine whether the vibration values are abnormal. To make that assessment you would need to provide actual vibration data and then apply the outlier‑detection/statistical analysis steps described in the engineering roadmap.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_tools.py
+
+AVAILABLE TOOLS
+================
+{'name': 'dataset_summary', 'description': 'Generate a structural summary of an engineering dataset, including row count, column count, column names, and numeric statistical summary.'}
+{'name': 'statistics', 'description': 'Calculate descriptive statistics for numeric columns in an engineering dataset.'}
+{'name': 'correlation', 'description': 'Calculate the Pearson correlation matrix between numeric variables in an engineering dataset.'}
+{'name': 'outlier_detection', 'description': 'Detect statistical outliers in numeric engineering variables using the IQR method.'}
+
+DATASET SUMMARY
+================
+{'rows': 5, 'columns': 3, 'column_names': ['temperature_c', 'voltage_v', 'current_a'], 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+STATISTICS
+================
+{'rows': 5, 'columns': 3, 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+CORRELATION
+================
+{'temperature_c': {'temperature_c': 1.0, 'voltage_v': 0.995, 'current_a': 0.993}, 'voltage_v': {'temperature_c': 0.995, 'voltage_v': 1.0, 'current_a': 0.996}, 'current_a': {'temperature_c': 0.993, 'voltage_v': 0.996, 'current_a': 1.0}}
+
+OUTLIERS
+================
+{'temperature_c': {'observations': 5, 'outlier_count': 1, 'outlier_values': [95], 'lower_bound': 68.0, 'upper_bound': 76.0}, 'voltage_v': {'observations': 5, 'outlier_count': 1, 'outlier_values': [3.8], 'lower_bound': 3.2849999999999993, 'upper_bound': 3.325}, 'current_a': {'observations': 5, 'outlier_count': 1, 'outlier_values': [2.1], 'lower_bound': 1.0999999999999999, 'upper_bound': 1.4200000000000002}}
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 2265.88it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': -8.5, 'upper_bound': 29.5}, 'temperature_c': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 21.399999999999988, 'upper_bound': 45.40000000000002}, 'voltage_v': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 10.65, 'upper_bound': 12.65}, 'current_a': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 1.4412500000000004, 'upper_bound': 2.831249999999999}, 'pressure_kpa': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 99.84999999999998, 'upper_bound': 104.45}, 'vibration_mm_s': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 0.20000000000000018, 'upper_bound': 4.3999999999999995}}
+
+Document Context:
+The provided engineering documents describe how to detect abnormal values (e.g., using the **OutlierDetectionTool**, statistical analysis, and visualization), but they do not contain any actual vibration measurements from your dataset. Since no vibration data is included in the context you shared, I cannot determine whether the vibration values are abnormal. To assess abnormality, you would need to run the outlier‑detection and statistical analysis steps outlined in the roadmap on your specific vibration data.
+
+Final Answer:
+**Engineering document context**  
+The document explains that to decide if vibration readings are abnormal you must apply an outlier‑detection or statistical analysis (e.g., the OutlierDetectionTool). It does not contain any vibration measurements itself, so it cannot by itself label values as normal or abnormal.
+
+**Dataset analysis (authoritative numerical result)**  
+The outlier‑detection run on the vibration column (`vibration_mm_s`) produced:
+
+- 20 observations  
+- No outliers (`outlier_count: 0`)  
+- Lower bound = 0.20 mm/s  
+- Upper bound = 4.40 mm/s  
+
+Because the analysis found **zero outlier values**, all measured vibration amplitudes lie within the calculated acceptable range (0.20 – 4.40 mm/s).
+
+**Conclusion**  
+Based on the supplied dataset analysis, the vibration values are **not abnormal**; they fall within the defined bounds and no outliers were detected. The engineering document’s guidance aligns with this result—having applied the recommended outlier‑detection step, the data show no abnormal vibration.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 2869.49it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': -8.5, 'upper_bound': 29.5}, 'temperature_c': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 21.399999999999988, 'upper_bound': 45.40000000000002}, 'voltage_v': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 10.65, 'upper_bound': 12.65}, 'current_a': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 1.4412500000000004, 'upper_bound': 2.831249999999999}, 'pressure_kpa': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 99.84999999999998, 'upper_bound': 104.45}, 'vibration_mm_s': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 0.20000000000000018, 'upper_bound': 4.3999999999999995}}
+
+Document Context:
+[Document Chunk 27]
+EngiSense AI10-Phase Development Roadmap
+10.3 AI Tools
+Potential tools include:
+DatasetSummaryTool
+StatisticsTool
+CorrelationTool
+OutlierDetectionTool
+DocumentSearchTool
+10.4 AI Architecture
+User Question
+|
+v
+AI Assistant
+|
+v
+LangChain
+|
++-------------------+
+| |
+v v
+Dataset Tools RAG Tools
+| |
+v v
+Pandas / NumPy Document Retrieval
+| |
++---------+---------+
+|
+v
+Hugging Face LLM
+|
+v
+Response
+10.5 Example
+User:
+“Why did the temperature increase significantly during cycle 120?”
+Potential system workflow:
+1. Identify relevant dataset.
+2. Retrieve cycle 120 data.
+3. Calculate temperature statistics.
+4. Analyze current and voltage.
+19
+
+[Document Chunk 8]
+12 Phase 9 – Testing, Security and CI/CD 22
+12.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.3 Backend Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.4 Data Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.5 Security Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.6 CI Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.7 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13 Phase 10 – Deployment and Final Product Release 24
+13.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+[Document Chunk 22]
+EngiSense AI10-Phase Development Roadmap
+7.6 Example Analysis Pipeline
+CSV
+|
+v
+Pandas DataFrame
+|
++---- Data Profiling
+|
++---- Statistics
+|
++---- Correlation
+|
++---- Outlier Detection
+|
++---- Visualization
+|
+v
+Analysis Results
+7.7 Deliverables
+•Data processing service.
+•Statistical analysis service.
+•Visualization service.
+•Analysis APIs.
+7.8 Definition of Done
+The backend must be able to receive a dataset and generate:
+Dataset Summary
++
+Statistics
++
+Missing Value Report
++
+Correlation Information
++
+Outlier Information
++
+Charts
+without requiring an LLM.
+14
+
+[Document Chunk 21]
+EngiSense AI10-Phase Development Roadmap
+7.3 Tasks
+1. Implement dataset ingestion.
+2. Validate uploaded CSV files.
+3. Load data into Pandas DataFrame.
+4. Detect data types.
+5. Calculate dataset dimensions.
+6. Detect missing values.
+7. Detect duplicates.
+8. Generate descriptive statistics.
+9. Calculate correlations.
+10. Implement outlier detection.
+11. Generate charts.
+12. Store analysis metadata.
+13. Expose analysis through APIs.
+7.4 Statistical Operations
+Mean
+Median
+Standard Deviation
+Minimum
+Maximum
+Percentiles
+Variance
+Correlation
+7.5 Visualization Operations
+Line Plot
+Bar Chart
+Histogram
+Scatter Plot
+Box Plot
+Correlation Heatmap
+13
+
+[Document Chunk 4]
+7.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+7.3 Tasks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.4 Statistical Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.5 Visualization Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.6 Example Analysis Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.7 Deliverables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.8 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1
+
+Final Answer:
+**Engineering assessment**
+
+- The engineering documentation defines an **outlier‑detection step** as part of the analysis pipeline (see Document Chunks 7.6‑7.8 and 21). It does not specify any absolute safety or operating limits for vibration; the only criterion it provides is the statistical outlier bounds derived from the data.
+
+- The deterministic dataset analysis for the *vibration_mm_s* column reports:
+
+  * 20 observations  
+  * No outliers detected (`outlier_count: 0`)  
+  * Statistical outlier bounds: **lower = 0.20 mm/s**, **upper = 4.40 mm/s**  
+
+  Because the measured vibration values all lie within these bounds, the outlier‑detection tool classifies them as **non‑abnormal**.
+
+**Conclusion**
+
+Based on the available evidence, the vibration measurements are **not abnormal** according to the statistical outlier criteria defined in the engineering workflow. The document does not provide any separate engineering safety limits for vibration, so no further abnormality assessment can be made.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 3082.40it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'observations': 20, 'mean': 10.5, 'median': 10.5, 'minimum': 1.0, 'maximum': 20.0, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': -8.5, 'upper_bound': 29.5}, 'temperature_c': {'observations': 20, 'mean': 33.595, 'median': 33.05, 'minimum': 28.4, 'maximum': 40.4, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 21.399999999999988, 'upper_bound': 45.40000000000002}, 'voltage_v': {'observations': 20, 'mean': 11.65, 'median': 11.649999999999999, 'minimum': 11.2, 'maximum': 12.1, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 10.65, 'upper_bound': 12.65}, 'current_a': {'observations': 20, 'mean': 2.1425000000000005, 'median': 2.13, 'minimum': 1.82, 'maximum': 2.52, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 1.4412500000000004, 'upper_bound': 2.831249999999999}, 'pressure_kpa': {'observations': 20, 'mean': 102.15499999999999, 'median': 102.05, 'minimum': 101.1, 'maximum': 103.5, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 99.84999999999998, 'upper_bound': 104.45}, 'vibration_mm_s': {'observations': 20, 'mean': 2.3200000000000003, 'median': 2.25, 'minimum': 1.4, 'maximum': 3.6, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 0.20000000000000018, 'upper_bound': 4.3999999999999995}}
+
+Document Context:
+[Document Chunk 27]
+EngiSense AI10-Phase Development Roadmap
+10.3 AI Tools
+Potential tools include:
+DatasetSummaryTool
+StatisticsTool
+CorrelationTool
+OutlierDetectionTool
+DocumentSearchTool
+10.4 AI Architecture
+User Question
+|
+v
+AI Assistant
+|
+v
+LangChain
+|
++-------------------+
+| |
+v v
+Dataset Tools RAG Tools
+| |
+v v
+Pandas / NumPy Document Retrieval
+| |
++---------+---------+
+|
+v
+Hugging Face LLM
+|
+v
+Response
+10.5 Example
+User:
+“Why did the temperature increase significantly during cycle 120?”
+Potential system workflow:
+1. Identify relevant dataset.
+2. Retrieve cycle 120 data.
+3. Calculate temperature statistics.
+4. Analyze current and voltage.
+19
+
+[Document Chunk 8]
+12 Phase 9 – Testing, Security and CI/CD 22
+12.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.3 Backend Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.4 Data Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.5 Security Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.6 CI Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.7 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13 Phase 10 – Deployment and Final Product Release 24
+13.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+[Document Chunk 22]
+EngiSense AI10-Phase Development Roadmap
+7.6 Example Analysis Pipeline
+CSV
+|
+v
+Pandas DataFrame
+|
++---- Data Profiling
+|
++---- Statistics
+|
++---- Correlation
+|
++---- Outlier Detection
+|
++---- Visualization
+|
+v
+Analysis Results
+7.7 Deliverables
+•Data processing service.
+•Statistical analysis service.
+•Visualization service.
+•Analysis APIs.
+7.8 Definition of Done
+The backend must be able to receive a dataset and generate:
+Dataset Summary
++
+Statistics
++
+Missing Value Report
++
+Correlation Information
++
+Outlier Information
++
+Charts
+without requiring an LLM.
+14
+
+[Document Chunk 21]
+EngiSense AI10-Phase Development Roadmap
+7.3 Tasks
+1. Implement dataset ingestion.
+2. Validate uploaded CSV files.
+3. Load data into Pandas DataFrame.
+4. Detect data types.
+5. Calculate dataset dimensions.
+6. Detect missing values.
+7. Detect duplicates.
+8. Generate descriptive statistics.
+9. Calculate correlations.
+10. Implement outlier detection.
+11. Generate charts.
+12. Store analysis metadata.
+13. Expose analysis through APIs.
+7.4 Statistical Operations
+Mean
+Median
+Standard Deviation
+Minimum
+Maximum
+Percentiles
+Variance
+Correlation
+7.5 Visualization Operations
+Line Plot
+Bar Chart
+Histogram
+Scatter Plot
+Box Plot
+Correlation Heatmap
+13
+
+[Document Chunk 4]
+7.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+7.3 Tasks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.4 Statistical Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.5 Visualization Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.6 Example Analysis Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.7 Deliverables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.8 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1
+
+Final Answer:
+**Statistical assessment (from the dataset analysis)**  
+- The vibration column has 20 observations with a mean of 2.32 mm/s and a range of 1.4 – 3.6 mm/s.  
+- The outlier‑detection routine computed a lower bound of 0.20 mm/s and an upper bound of 4.40 mm/s.  
+- No values exceed these bounds (`outlier_count: 0`), so statistically the data contain **no outliers**.
+
+**Engineering context**  
+- The engineering document defines an “Outlier Detection” step in the analysis pipeline (see Document Chunks 7.6‑7.8) but does **not** provide any specific vibration safety or operating limits for the hardware being monitored.
+
+**Conclusion**  
+Based on the available evidence, the vibration measurements are **not abnormal** from a statistical standpoint—none are flagged as outliers. Because the engineering documentation does not specify explicit vibration limits, we cannot evaluate the data against any engineering safety thresholds. Therefore, with the current information, the vibration values appear normal.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [27536] using WatchFiles
+INFO:     Started server process [23520]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:7896 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7896 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:11902 - "POST /auth/login HTTP/1.1" 200 OK
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 1259.38it/s]
+INFO:     127.0.0.1:12958 - "POST /ai/unified-analyze HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:3302 - "GET /datasets/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8494 - "POST /ai/unified-analyze HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23520]
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 18, in <module>
+    import concurrent.futures
+  File "C:\Python314\Lib\concurrent\futures\__init__.py", line 8, in <module>
+    from concurrent.futures._base import (FIRST_COMPLETED,
+    ...<9 lines>...
+                                          as_completed)
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 7, in <module>
+    import logging
+  File "C:\Python314\Lib\logging\__init__.py", line 26, in <module>
+    import sys, os, time, io, re, traceback, warnings, weakref, collections.abc
+  File "C:\Python314\Lib\traceback.py", line 13, in <module>
+    import _colorize
+  File "C:\Python314\Lib\_colorize.py", line 189, in <module>
+    @dataclass(frozen=True)
+     ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Python314\Lib\dataclasses.py", line 1440, in wrap
+    return _process_class(cls, init, repr, eq, order, unsafe_hash,
+                          frozen, match_args, kw_only, slots,
+                          weakref_slot)
+  File "C:\Python314\Lib\dataclasses.py", line 1215, in _process_class
+    func_builder.add_fns_to_class(cls)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\dataclasses.py", line 506, in add_fns_to_class
+    exec(txt, self.globals, ns)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 0, in <module>
+    
+    
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+    
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 44, in <module>
+    from . import sslproto
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 951, in get_data
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 45, in <module>
+    from .windows_events import *
+  File "C:\Python314\Lib\asyncio\windows_events.py", line 23, in <module>
+    from . import proactor_events
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ INFO:     Started server process [28452]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28452]
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 44, in <module>
+    from . import sslproto
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1333, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1267, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1292, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1266, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1398, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 166, in _path_isfile
+  File "<frozen importlib._bootstrap_external>", line 158, in _path_is_mode_type
+  File "<frozen importlib._bootstrap_external>", line 152, in _path_stat
+KeyboardInterrupt
+INFO:     Started server process [7536]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7536]
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Started server process [10288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10288]
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 39, in <module>
+    from . import coroutines
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in get_data
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Started server process [15820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15820]
+INFO:     Started server process [15248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:9677 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6154 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:4701 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:4701 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:12422 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:12422 - "GET /openapi.json HTTP/1.1" 200 OK
+Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 888.53it/s]
+INFO:     127.0.0.1:5655 - "POST /ai/unified-analyze HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15248]
+INFO:     Stopping reloader process [27536]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> 
+
+
+
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> mkdir app\ai
+>> mkdir app\ai\tools
+>> 
+>> New-Item app\ai\__init__.py -ItemType File
+>> New-Item app\ai\tools\__init__.py -ItemType File
+>> New-Item app\ai\tools\base.py -ItemType File
+>> New-Item app\ai\tools\dataset_summary.py -ItemType File
+>> New-Item app\ai\tools\statistics.py -ItemType File
+>> New-Item app\ai\tools\correlation.py -ItemType File
+>> New-Item app\ai\tools\outlier_detection.py -ItemType File
+>> New-Item app\ai\registry.py -ItemType File
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+d-----        26-09-2026     21:39                ai                                                                                                                                                    
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\ai
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+d-----        26-09-2026     21:39                tools                                                                                                                                                 
+-a----        26-09-2026     21:39              0 __init__.py                                                                                                                                           
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\ai\tools
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+-a----        26-09-2026     21:39              0 __init__.py                                                                                                                                           
+-a----        26-09-2026     21:39              0 base.py                                                                                                                                               
+-a----        26-09-2026     21:39              0 dataset_summary.py                                                                                                                                    
+-a----        26-09-2026     21:39              0 statistics.py                                                                                                                                         
+-a----        26-09-2026     21:39              0 correlation.py                                                                                                                                        
+-a----        26-09-2026     21:39              0 outlier_detection.py                                                                                                                                  
+
+
+    Directory: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\ai
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                                  
+----                 -------------         ------ ----                                                                                                                                                  
+-a----        26-09-2026     21:39              0 registry.py                                                                                                                                           
+
+
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_tools.py
+
+AVAILABLE TOOLS
+================
+{'name': 'dataset_summary', 'description': 'Generate a structural summary of an engineering dataset, including row count, column count, column names, and numeric statistical summary.'}
+{'name': 'statistics', 'description': 'Calculate descriptive statistics for numeric columns in an engineering dataset.'}
+{'name': 'correlation', 'description': 'Calculate the Pearson correlation matrix between numeric variables in an engineering dataset.'}
+{'name': 'outlier_detection', 'description': 'Detect statistical outliers in numeric engineering variables using the IQR method.'}
+
+DATASET SUMMARY
+================
+{'rows': 5, 'columns': 3, 'column_names': ['temperature_c', 'voltage_v', 'current_a'], 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+STATISTICS
+================
+{'rows': 5, 'columns': 3, 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+CORRELATION
+================
+{'temperature_c': {'temperature_c': 1.0, 'voltage_v': 0.995, 'current_a': 0.993}, 'voltage_v': {'temperature_c': 0.995, 'voltage_v': 1.0, 'current_a': 0.996}, 'current_a': {'temperature_c': 0.993, 'voltage_v': 0.996, 'current_a': 1.0}}
+
+OUTLIERS
+================
+{'temperature_c': {'count': 1, 'values': [95]}, 'voltage_v': {'count': 1, 'values': [3.8]}, 'current_a': {'count': 1, 'values': [2.1]}}
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_tool_service.py
+
+AI TOOL SERVICE RESULT
+======================
+{'tool_name': 'dataset_summary', 'dataset_id': 7, 'success': True, 'result': {'rows': 20, 'columns': 6, 'column_names': ['cycle', 'temperature_c', 'voltage_v', 'current_a', 'pressure_kpa', 'vibration_mm_s'], 'numeric_summary': {'cycle': {'count': 20.0, 'mean': 10.5, 'std': 5.916079783099616, 'min': 1.0, '25%': 5.75, '50%': 10.5, '75%': 15.25, 'max': 20.0}, 'temperature_c': {'count': 20.0, 'mean': 33.595, 'std': 3.7283374310810444, 'min': 28.4, '25%': 30.4, '50%': 33.05, '75%': 36.400000000000006, 'max': 40.4}, 'voltage_v': {'count': 20.0, 'mean': 11.65, 'std': 0.29468984587725094, 'min': 11.2, '25%': 11.4, '50%': 11.649999999999999, '75%': 11.9, 'max': 12.1}, 'current_a': {'count': 20.0, 'mean': 2.1425000000000005, 'std': 0.21576973593942322, 'min': 1.82, '25%': 1.9625, '50%': 2.13, '75%': 2.3099999999999996, 'max': 2.52}, 'pressure_kpa': {'count': 20.0, 'mean': 102.15499999999999, 'std': 0.7294374184043624, 'min': 101.1, '25%': 101.57499999999999, '50%': 102.05, '75%': 102.725, 'max': 103.5}, 'vibration_mm_s': {'count': 20.0, 'mean': 2.3200000000000003, 'std': 0.6786984447804256, 'min': 1.4, '25%': 1.775, '50%': 2.25, '75%': 2.8249999999999997, 'max': 3.6}}}}
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_router.py
+
+QUESTION:
+Give me a summary of this dataset.
+SELECTED TOOL:
+dataset_summary
+
+QUESTION:
+What are the average and standard deviation of the parameters?
+SELECTED TOOL:
+statistics
+
+QUESTION:
+Which parameters are correlated?
+SELECTED TOOL:
+correlation
+
+QUESTION:
+Which values are abnormal?
+SELECTED TOOL:
+outlier_detection
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> Give me a summary of this datasetGive me a summary of this dataset.
+Give : The term 'Give' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is 
+correct and try again.
+At line:1 char:1
++ Give me a summary of this datasetGive me a summary of this dataset.
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (Give:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> 
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> SELECTED TOOL:dataset_summary^C
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_router.py                                           
+
+QUESTION:
+Give me a summary of this dataset.
+SELECTED TOOL:
+dataset_summary
+
+QUESTION:
+What are the average and standard deviation of the parameters?
+SELECTED TOOL:
+statistics
+
+QUESTION:
+Which parameters are correlated?
+SELECTED TOOL:
+correlation
+
+QUESTION:
+Which values are abnormal?
+SELECTED TOOL:
+outlier_detection
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload                                      
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [14560] using WatchFiles
+INFO:     Started server process [28416]           
+INFO:     Waiting for application startup.     
+INFO:     Application startup complete.                   
+INFO:     127.0.0.1:5801 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5801 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8348 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9884 - "POST /ai/analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:13307 - "POST /ai/analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9660 - "POST /ai/analyze HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10517 - "POST /ai/analyze HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28416]
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Started server process [24584]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24584]
+INFO:     Started server process [15392]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\documents\rag_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15392]
+WARNING:  WatchFiles detected changes in 'app\documents\rag_service.py'. Reloading...
+ INFO:     Started server process [29244]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [29244]
+INFO:     Started server process [8044]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8044]
+INFO:     Started server process [24148]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'test_unified_ai.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24148]
+WARNING:  WatchFiles detected changes in 'test_unified_ai.py'. Reloading...
+ INFO:     Started server process [28440]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28440]
+INFO:     Started server process [26544]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26544]
+INFO:     Stopping reloader process [14560]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 2481.04it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'count': 0, 'values': []}, 'temperature_c': {'count': 0, 'values': []}, 'voltage_v': {'count': 0, 'values': []}, 'current_a': {'count': 0, 'values': []}, 'pressure_kpa': {'count': 0, 'values': []}, 'vibration_mm_s': {'count': 0, 'values': []}}
+
+Document Context:
+The engineering documents describe how to detect abnormal values (e.g., using the **OutlierDetectionTool**, statistical analysis, and visualization), but they do not contain any actual vibration measurements from your dataset. Since no vibration data is provided in the context, I cannot determine whether the vibration values are abnormal. To assess that, you would need to run the outlier‑detection and statistical analysis steps outlined in the roadmap on your specific dataset.
+
+Final Answer:
+**Engineering document context**
+
+- The documents explain that abnormal vibration values are identified with the **OutlierDetectionTool** (or similar statistical/visual methods), but they do **not** contain any actual vibration measurements.  
+- Because no vibration data are supplied in the documentation, the documents alone cannot tell you whether any vibration readings are abnormal.  
+
+**Deterministic dataset analysis**
+
+- The outlier‑detection run on your dataset returned  
+
+```json
+'vibration_mm_s': {'count': 0, 'values': []}
+```  
+
+- This indicates that **no vibration measurements were present** (count = 0) for the variable `vibration_mm_s` in the dataset that was analyzed.  
+
+**Conclusion**
+
+Since both the engineering documentation and the dataset analysis show that there are **no vibration values to evaluate**, it is not possible to determine whether the vibration values are abnormal. To make that assessment you would need to provide actual vibration data and then apply the outlier‑detection/statistical analysis steps described in the engineering roadmap.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_ai_tools.py
+
+AVAILABLE TOOLS
+================
+{'name': 'dataset_summary', 'description': 'Generate a structural summary of an engineering dataset, including row count, column count, column names, and numeric statistical summary.'}
+{'name': 'statistics', 'description': 'Calculate descriptive statistics for numeric columns in an engineering dataset.'}
+{'name': 'correlation', 'description': 'Calculate the Pearson correlation matrix between numeric variables in an engineering dataset.'}
+{'name': 'outlier_detection', 'description': 'Detect statistical outliers in numeric engineering variables using the IQR method.'}
+
+DATASET SUMMARY
+================
+{'rows': 5, 'columns': 3, 'column_names': ['temperature_c', 'voltage_v', 'current_a'], 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+STATISTICS
+================
+{'rows': 5, 'columns': 3, 'numeric_summary': {'temperature_c': {'count': 5.0, 'mean': 76.2, 'std': 10.56882207249228, 'min': 70.0, '25%': 71.0, '50%': 72.0, '75%': 73.0, 'max': 95.0}, 'voltage_v': {'count': 5.0, 'mean': 3.4, 'std': 0.22371857321197086, 'min': 3.29, '25%': 3.3, '50%': 3.3, '75%': 3.31, 'max': 3.8}, 'current_a': {'count': 5.0, 'mean': 1.414, 'std': 0.38533102652135354, 'min': 1.2, '25%': 1.22, '50%': 1.25, '75%': 1.3, 'max': 2.1}}}
+
+CORRELATION
+================
+{'temperature_c': {'temperature_c': 1.0, 'voltage_v': 0.995, 'current_a': 0.993}, 'voltage_v': {'temperature_c': 0.995, 'voltage_v': 1.0, 'current_a': 0.996}, 'current_a': {'temperature_c': 0.993, 'voltage_v': 0.996, 'current_a': 1.0}}
+
+OUTLIERS
+================
+{'temperature_c': {'observations': 5, 'outlier_count': 1, 'outlier_values': [95], 'lower_bound': 68.0, 'upper_bound': 76.0}, 'voltage_v': {'observations': 5, 'outlier_count': 1, 'outlier_values': [3.8], 'lower_bound': 3.2849999999999993, 'upper_bound': 3.325}, 'current_a': {'observations': 5, 'outlier_count': 1, 'outlier_values': [2.1], 'lower_bound': 1.0999999999999999, 'upper_bound': 1.4200000000000002}}
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 2265.88it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': -8.5, 'upper_bound': 29.5}, 'temperature_c': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 21.399999999999988, 'upper_bound': 45.40000000000002}, 'voltage_v': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 10.65, 'upper_bound': 12.65}, 'current_a': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 1.4412500000000004, 'upper_bound': 2.831249999999999}, 'pressure_kpa': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 99.84999999999998, 'upper_bound': 104.45}, 'vibration_mm_s': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 0.20000000000000018, 'upper_bound': 4.3999999999999995}}
+
+Document Context:
+The provided engineering documents describe how to detect abnormal values (e.g., using the **OutlierDetectionTool**, statistical analysis, and visualization), but they do not contain any actual vibration measurements from your dataset. Since no vibration data is included in the context you shared, I cannot determine whether the vibration values are abnormal. To assess abnormality, you would need to run the outlier‑detection and statistical analysis steps outlined in the roadmap on your specific vibration data.
+
+Final Answer:
+**Engineering document context**  
+The document explains that to decide if vibration readings are abnormal you must apply an outlier‑detection or statistical analysis (e.g., the OutlierDetectionTool). It does not contain any vibration measurements itself, so it cannot by itself label values as normal or abnormal.
+
+**Dataset analysis (authoritative numerical result)**  
+The outlier‑detection run on the vibration column (`vibration_mm_s`) produced:
+
+- 20 observations  
+- No outliers (`outlier_count: 0`)  
+- Lower bound = 0.20 mm/s  
+- Upper bound = 4.40 mm/s  
+
+Because the analysis found **zero outlier values**, all measured vibration amplitudes lie within the calculated acceptable range (0.20 – 4.40 mm/s).
+
+**Conclusion**  
+Based on the supplied dataset analysis, the vibration values are **not abnormal**; they fall within the defined bounds and no outliers were detected. The engineering document’s guidance aligns with this result—having applied the recommended outlier‑detection step, the data show no abnormal vibration.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 2869.49it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': -8.5, 'upper_bound': 29.5}, 'temperature_c': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 21.399999999999988, 'upper_bound': 45.40000000000002}, 'voltage_v': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 10.65, 'upper_bound': 12.65}, 'current_a': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 1.4412500000000004, 'upper_bound': 2.831249999999999}, 'pressure_kpa': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 99.84999999999998, 'upper_bound': 104.45}, 'vibration_mm_s': {'observations': 20, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 0.20000000000000018, 'upper_bound': 4.3999999999999995}}
+
+Document Context:
+[Document Chunk 27]
+EngiSense AI10-Phase Development Roadmap
+10.3 AI Tools
+Potential tools include:
+DatasetSummaryTool
+StatisticsTool
+CorrelationTool
+OutlierDetectionTool
+DocumentSearchTool
+10.4 AI Architecture
+User Question
+|
+v
+AI Assistant
+|
+v
+LangChain
+|
++-------------------+
+| |
+v v
+Dataset Tools RAG Tools
+| |
+v v
+Pandas / NumPy Document Retrieval
+| |
++---------+---------+
+|
+v
+Hugging Face LLM
+|
+v
+Response
+10.5 Example
+User:
+“Why did the temperature increase significantly during cycle 120?”
+Potential system workflow:
+1. Identify relevant dataset.
+2. Retrieve cycle 120 data.
+3. Calculate temperature statistics.
+4. Analyze current and voltage.
+19
+
+[Document Chunk 8]
+12 Phase 9 – Testing, Security and CI/CD 22
+12.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.3 Backend Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.4 Data Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.5 Security Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.6 CI Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.7 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13 Phase 10 – Deployment and Final Product Release 24
+13.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+[Document Chunk 22]
+EngiSense AI10-Phase Development Roadmap
+7.6 Example Analysis Pipeline
+CSV
+|
+v
+Pandas DataFrame
+|
++---- Data Profiling
+|
++---- Statistics
+|
++---- Correlation
+|
++---- Outlier Detection
+|
++---- Visualization
+|
+v
+Analysis Results
+7.7 Deliverables
+•Data processing service.
+•Statistical analysis service.
+•Visualization service.
+•Analysis APIs.
+7.8 Definition of Done
+The backend must be able to receive a dataset and generate:
+Dataset Summary
++
+Statistics
++
+Missing Value Report
++
+Correlation Information
++
+Outlier Information
++
+Charts
+without requiring an LLM.
+14
+
+[Document Chunk 21]
+EngiSense AI10-Phase Development Roadmap
+7.3 Tasks
+1. Implement dataset ingestion.
+2. Validate uploaded CSV files.
+3. Load data into Pandas DataFrame.
+4. Detect data types.
+5. Calculate dataset dimensions.
+6. Detect missing values.
+7. Detect duplicates.
+8. Generate descriptive statistics.
+9. Calculate correlations.
+10. Implement outlier detection.
+11. Generate charts.
+12. Store analysis metadata.
+13. Expose analysis through APIs.
+7.4 Statistical Operations
+Mean
+Median
+Standard Deviation
+Minimum
+Maximum
+Percentiles
+Variance
+Correlation
+7.5 Visualization Operations
+Line Plot
+Bar Chart
+Histogram
+Scatter Plot
+Box Plot
+Correlation Heatmap
+13
+
+[Document Chunk 4]
+7.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+7.3 Tasks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.4 Statistical Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.5 Visualization Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.6 Example Analysis Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.7 Deliverables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.8 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1
+
+Final Answer:
+**Engineering assessment**
+
+- The engineering documentation defines an **outlier‑detection step** as part of the analysis pipeline (see Document Chunks 7.6‑7.8 and 21). It does not specify any absolute safety or operating limits for vibration; the only criterion it provides is the statistical outlier bounds derived from the data.
+
+- The deterministic dataset analysis for the *vibration_mm_s* column reports:
+
+  * 20 observations  
+  * No outliers detected (`outlier_count: 0`)  
+  * Statistical outlier bounds: **lower = 0.20 mm/s**, **upper = 4.40 mm/s**  
+
+  Because the measured vibration values all lie within these bounds, the outlier‑detection tool classifies them as **non‑abnormal**.
+
+**Conclusion**
+
+Based on the available evidence, the vibration measurements are **not abnormal** according to the statistical outlier criteria defined in the engineering workflow. The document does not provide any separate engineering safety limits for vibration, so no further abnormality assessment can be made.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_unified_ai.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 3082.40it/s]
+
+UNIFIED AI RESULT
+=================
+
+Tool Used:
+outlier_detection
+
+Dataset Result:
+{'cycle': {'observations': 20, 'mean': 10.5, 'median': 10.5, 'minimum': 1.0, 'maximum': 20.0, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': -8.5, 'upper_bound': 29.5}, 'temperature_c': {'observations': 20, 'mean': 33.595, 'median': 33.05, 'minimum': 28.4, 'maximum': 40.4, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 21.399999999999988, 'upper_bound': 45.40000000000002}, 'voltage_v': {'observations': 20, 'mean': 11.65, 'median': 11.649999999999999, 'minimum': 11.2, 'maximum': 12.1, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 10.65, 'upper_bound': 12.65}, 'current_a': {'observations': 20, 'mean': 2.1425000000000005, 'median': 2.13, 'minimum': 1.82, 'maximum': 2.52, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 1.4412500000000004, 'upper_bound': 2.831249999999999}, 'pressure_kpa': {'observations': 20, 'mean': 102.15499999999999, 'median': 102.05, 'minimum': 101.1, 'maximum': 103.5, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 99.84999999999998, 'upper_bound': 104.45}, 'vibration_mm_s': {'observations': 20, 'mean': 2.3200000000000003, 'median': 2.25, 'minimum': 1.4, 'maximum': 3.6, 'outlier_count': 0, 'outlier_values': [], 'lower_bound': 0.20000000000000018, 'upper_bound': 4.3999999999999995}}
+
+Document Context:
+[Document Chunk 27]
+EngiSense AI10-Phase Development Roadmap
+10.3 AI Tools
+Potential tools include:
+DatasetSummaryTool
+StatisticsTool
+CorrelationTool
+OutlierDetectionTool
+DocumentSearchTool
+10.4 AI Architecture
+User Question
+|
+v
+AI Assistant
+|
+v
+LangChain
+|
++-------------------+
+| |
+v v
+Dataset Tools RAG Tools
+| |
+v v
+Pandas / NumPy Document Retrieval
+| |
++---------+---------+
+|
+v
+Hugging Face LLM
+|
+v
+Response
+10.5 Example
+User:
+“Why did the temperature increase significantly during cycle 120?”
+Potential system workflow:
+1. Identify relevant dataset.
+2. Retrieve cycle 120 data.
+3. Calculate temperature statistics.
+4. Analyze current and voltage.
+19
+
+[Document Chunk 8]
+12 Phase 9 – Testing, Security and CI/CD 22
+12.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.3 Backend Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+12.4 Data Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.5 Security Testing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.6 CI Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+12.7 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13 Phase 10 – Deployment and Final Product Release 24
+13.1 Objective . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+13.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+
+[Document Chunk 22]
+EngiSense AI10-Phase Development Roadmap
+7.6 Example Analysis Pipeline
+CSV
+|
+v
+Pandas DataFrame
+|
++---- Data Profiling
+|
++---- Statistics
+|
++---- Correlation
+|
++---- Outlier Detection
+|
++---- Visualization
+|
+v
+Analysis Results
+7.7 Deliverables
+•Data processing service.
+•Statistical analysis service.
+•Visualization service.
+•Analysis APIs.
+7.8 Definition of Done
+The backend must be able to receive a dataset and generate:
+Dataset Summary
++
+Statistics
++
+Missing Value Report
++
+Correlation Information
++
+Outlier Information
++
+Charts
+without requiring an LLM.
+14
+
+[Document Chunk 21]
+EngiSense AI10-Phase Development Roadmap
+7.3 Tasks
+1. Implement dataset ingestion.
+2. Validate uploaded CSV files.
+3. Load data into Pandas DataFrame.
+4. Detect data types.
+5. Calculate dataset dimensions.
+6. Detect missing values.
+7. Detect duplicates.
+8. Generate descriptive statistics.
+9. Calculate correlations.
+10. Implement outlier detection.
+11. Generate charts.
+12. Store analysis metadata.
+13. Expose analysis through APIs.
+7.4 Statistical Operations
+Mean
+Median
+Standard Deviation
+Minimum
+Maximum
+Percentiles
+Variance
+Correlation
+7.5 Visualization Operations
+Line Plot
+Bar Chart
+Histogram
+Scatter Plot
+Box Plot
+Correlation Heatmap
+13
+
+[Document Chunk 4]
+7.2 Tools . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+7.3 Tasks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.4 Statistical Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.5 Visualization Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+7.6 Example Analysis Pipeline . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.7 Deliverables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+7.8 Definition of Done . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1
+
+Final Answer:
+**Statistical assessment (from the dataset analysis)**  
+- The vibration column has 20 observations with a mean of 2.32 mm/s and a range of 1.4 – 3.6 mm/s.  
+- The outlier‑detection routine computed a lower bound of 0.20 mm/s and an upper bound of 4.40 mm/s.  
+- No values exceed these bounds (`outlier_count: 0`), so statistically the data contain **no outliers**.
+
+**Engineering context**  
+- The engineering document defines an “Outlier Detection” step in the analysis pipeline (see Document Chunks 7.6‑7.8) but does **not** provide any specific vibration safety or operating limits for the hardware being monitored.
+
+**Conclusion**  
+Based on the available evidence, the vibration measurements are **not abnormal** from a statistical standpoint—none are flagged as outliers. Because the engineering documentation does not specify explicit vibration limits, we cannot evaluate the data against any engineering safety thresholds. Therefore, with the current information, the vibration values appear normal.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [27536] using WatchFiles
+INFO:     Started server process [23520]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:7896 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7896 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:11902 - "POST /auth/login HTTP/1.1" 200 OK
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 1259.38it/s]
+INFO:     127.0.0.1:12958 - "POST /ai/unified-analyze HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:3302 - "GET /datasets/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8494 - "POST /ai/unified-analyze HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23520]
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 18, in <module>
+    import concurrent.futures
+  File "C:\Python314\Lib\concurrent\futures\__init__.py", line 8, in <module>
+    from concurrent.futures._base import (FIRST_COMPLETED,
+    ...<9 lines>...
+                                          as_completed)
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 7, in <module>
+    import logging
+  File "C:\Python314\Lib\logging\__init__.py", line 26, in <module>
+    import sys, os, time, io, re, traceback, warnings, weakref, collections.abc
+  File "C:\Python314\Lib\traceback.py", line 13, in <module>
+    import _colorize
+  File "C:\Python314\Lib\_colorize.py", line 189, in <module>
+    @dataclass(frozen=True)
+     ~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Python314\Lib\dataclasses.py", line 1440, in wrap
+    return _process_class(cls, init, repr, eq, order, unsafe_hash,
+                          frozen, match_args, kw_only, slots,
+                          weakref_slot)
+  File "C:\Python314\Lib\dataclasses.py", line 1215, in _process_class
+    func_builder.add_fns_to_class(cls)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\dataclasses.py", line 506, in add_fns_to_class
+    exec(txt, self.globals, ns)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 0, in <module>
+    
+    
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+    
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 44, in <module>
+    from . import sslproto
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 951, in get_data
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 45, in <module>
+    from .windows_events import *
+  File "C:\Python314\Lib\asyncio\windows_events.py", line 23, in <module>
+    from . import proactor_events
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ INFO:     Started server process [28452]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28452]
+WARNING:  WatchFiles detected changes in 'app\schemas\unified_ai.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 44, in <module>
+    from . import sslproto
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1333, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1267, in _find_spec
+  File "<frozen importlib._bootstrap_external>", line 1292, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 1266, in _get_spec
+  File "<frozen importlib._bootstrap_external>", line 1398, in find_spec
+  File "<frozen importlib._bootstrap_external>", line 166, in _path_isfile
+  File "<frozen importlib._bootstrap_external>", line 158, in _path_is_mode_type
+  File "<frozen importlib._bootstrap_external>", line 152, in _path_stat
+KeyboardInterrupt
+INFO:     Started server process [7536]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7536]
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Started server process [10288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10288]
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27536, pipe_handle=580)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 39, in <module>
+    from . import coroutines
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in get_data
+KeyboardInterrupt
+WARNING:  WatchFiles detected changes in 'app\ai\unified_service.py'. Reloading...
+ INFO:     Started server process [15820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15820]
+INFO:     Started server process [15248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:9677 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:6154 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:4701 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:4701 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:12422 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:12422 - "GET /openapi.json HTTP/1.1" 200 OK
+Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 888.53it/s]
+INFO:     127.0.0.1:5655 - "POST /ai/unified-analyze HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15248]
+INFO:     Stopping reloader process [27536]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> ^C
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend>    
+
+

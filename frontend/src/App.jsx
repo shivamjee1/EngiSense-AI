@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Datasets from "./pages/Datasets";
 import DatasetDetails from "./pages/DatasetDetails";
 import Analysis from "./pages/Analysis";
+import Documents from "./pages/Documents";
 import History from "./pages/History";
 
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -16,8 +18,10 @@ function App() {
     <BrowserRouter>
       <Routes>
 
+        
         {/* Public Routes */}
 
+        <Route path="/" element={<Landing />} />
         <Route
           path="/"
           element={<Login />}
@@ -48,6 +52,10 @@ function App() {
             <Route
               path="/datasets"
               element={<Datasets />}
+            />
+            <Route
+              path="/documents"
+              element={<Documents />}
             />
 
             <Route

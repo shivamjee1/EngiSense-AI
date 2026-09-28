@@ -29,6 +29,10 @@ function Navbar() {
           Datasets
         </NavLink>
 
+        <NavLink to="/documents" className={navClass}>
+          Documents
+        </NavLink>
+
         <NavLink to="/history" className={navClass}>
           History
         </NavLink>

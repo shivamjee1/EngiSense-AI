@@ -6,6 +6,8 @@ from app.api.analysis import router as analysis_router
 from app.api.datasets import router as datasets_router
 from app.api.documents import router as documents_router
 from app.api.rag import router as rag_router
+from app.api.ai import router as ai_router
+from app.api.unified_ai import router as unified_ai_router
 
 from app.database.dependencies import get_db
 
@@ -49,6 +51,8 @@ app.include_router(analysis_router)
 app.include_router(datasets_router)
 app.include_router(documents_router)
 app.include_router(rag_router)
+app.include_router(ai_router)
+app.include_router(unified_ai_router)
 
 @app.get("/")
 def root():

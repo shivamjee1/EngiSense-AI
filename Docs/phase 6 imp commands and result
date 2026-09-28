@@ -1,0 +1,515 @@
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_llm.py
+config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 659/659 [00:00<00:00, 1.38MB/s]
+C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\file_download.py:149: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\SHIVAM KUMAR\.cache\huggingface\hub\models--Qwen--Qwen2.5-0.5B-Instruct. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+tokenizer_config.json: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7.30k/7.30k [00:00<00:00, 9.38MB/s]
+vocab.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2.78M/2.78M [00:01<00:00, 2.62MB/s]
+merges.txt: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1.67M/1.67M [00:00<00:00, 1.94MB/s]
+tokenizer.json: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7.03M/7.03M [00:02<00:00, 3.22MB/s]
+C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\file_download.py:149: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\SHIVAM KUMAR\.cache\huggingface\hub. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+model.safetensors: downloading bytes: ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████|  542MB, 1.47MB/s  
+model.safetensors: reconstructing file:  13%|████████████████                                                                                                              |  126MB /  988MB, 5.19kB/s  
+Traceback (most recent call last):
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\test_llm.py", line 4, in <module>
+    llm = HuggingFaceLLMService()
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\llm\huggingface_service.py", line 12, in __init__
+    self.model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\transformers\models\auto\auto_factory.py", line 402, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\transformers\modeling_utils.py", line 4218, in from_pretrained
+    checkpoint_files, sharded_metadata = _get_resolved_checkpoint_files(
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path=pretrained_model_name_or_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\transformers\modeling_utils.py", line 677, in _get_resolved_checkpoint_files
+    resolved_archive_file = cached_file(pretrained_model_name_or_path, filename, **cached_file_kwargs)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\transformers\utils\hub.py", line 294, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\transformers\utils\hub.py", line 438, in cached_files
+    hf_hub_download(
+    ~~~~~~~~~~~~~~~^
+        path_or_repo_id,
+        ^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\utils\_http.py", line 266, in _inner
+    return fn(*args, **kwargs)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1047, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+        # Destination
+    ...<15 lines>...
+        dry_run=dry_run,
+    )
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1285, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        incomplete_path=Path(blob_path + ".incomplete"),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 2016, in _download_to_tmp_and_move
+    xet_get(
+    ~~~~~~~^
+        incomplete_path=tmp_path,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        tqdm_class=tqdm_class,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 589, in xet_get
+    with session.new_file_download_group(
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        endpoint=connection_info.endpoint,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        progress_callback=progress.update_progress,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as group:
+    ^
+KeyboardInterrupt
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_rag_pipeline.py
+Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 810.94it/s]
+RAG pipeline successful
+Retrieved chunks: 5
+Context characters: 3063
+Prompt characters: 3463
+
+--- RESPONSE ---
+
+This is a development response from EngiSense AI. The RAG pipeline successfully provided document context to the LLM layer.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_rag_pipeline.py
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 1442.55it/s]
+RAG pipeline successful
+Retrieved chunks: 5
+Context characters: 3063
+Prompt characters: 3463
+
+--- RESPONSE ---
+
+Development LLM received the RAG prompt successfully.
+
+Prompt preview:
+You are EngiSense AI, an engineering intelligence assistant.
+
+Answer the user's question using only the provided document context.
+
+If the answer cannot be found in the context, clearly state that the information is not available in the provided documents.
+
+Do not invent facts.
+
+Document Context:
+----------------
+[Document Chunk 11]
+EngiSense AI10-Phase Development Roadmap
+1 Purpose of This Document
+This document defines the complete development roadmap for the EngiSense AI project.
+The purpose of this roadmap is to provide a structured development path so that
+the project can be implemented systematically rather than developing unrelated features
+independently.
+The project is divided into ten major phases.
+Each phase contains:
+•Objective
+•Technologies and tools
+•Development tasks
+•Expected deliverables
+•Definition of Done
+The phases are ordered according to their technical dependencies.
+The development process should follow the sequence defined in this document unless
+an architectural
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [14528] using WatchFiles
+INFO:     Started server process [1584]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:9468 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9468 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9468 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:9468 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9468 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9468 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9468 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9468 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9468 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2398 - "POST /rag/ask HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:2602 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:13858 - "POST /auth/login HTTP/1.1" 200 OK
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 1101.48it/s]
+INFO:     127.0.0.1:3160 - "POST /rag/ask HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 422, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\middleware\cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\middleware\cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\routing.py", line 676, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\fastapi\routing.py", line 354, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\api\rag.py", line 29, in ask_question
+    answer = rag_service.answer_question(
+        question=payload.question,
+    ...<2 lines>...
+        db=db,
+    )
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\app\documents\rag_service.py", line 42, in answer_question
+    chunks = self.retriever.retrieve(
+        question=question,
+    ...<2 lines>...
+        document_id=document.id,
+    )
+TypeError: DocumentRetriever.retrieve() got an unexpected keyword argument 'question'
+WARNING:  WatchFiles detected changes in 'app\documents\rag_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1584]
+INFO:     Started server process [11944]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Finished server process [11944]
+ERROR:    Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 2056, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "C:\Python314\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\server.py", line 89, in serve
+    with self.capture_signals():
+         ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 148, in __exit__
+    next(self.gen)
+    ~~~~^^^^^^^^^^
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\server.py", line 349, in capture_signals
+    signal.raise_signal(captured_signal)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 167, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\starlette\routing.py", line 661, in lifespan
+    await receive()
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\lifespan\on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\queues.py", line 186, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+INFO:     Stopping reloader process [14528]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [27960] using WatchFiles
+INFO:     Started server process [26612]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:2546 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2546 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:4784 - "POST /auth/login HTTP/1.1" 200 OK
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 1086.11it/s]
+INFO:     127.0.0.1:5027 - "POST /rag/ask HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\llm\mock_service.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26612]
+WARNING:  WatchFiles detected changes in 'app\llm\mock_service.py'. Reloading...
+ INFO:     Started server process [8404]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8404]
+WARNING:  WatchFiles detected changes in 'app\llm\mock_service.py'. Reloading...
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=27960, pipe_handle=576)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Python314\Lib\multiprocessing\spawn.py", line 132, in _main
+    self = reduction.pickle.load(from_parent)
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages\uvicorn\config.py", line 3, in <module>
+    import asyncio
+  File "C:\Python314\Lib\asyncio\__init__.py", line 8, in <module>
+    from .base_events import *
+  File "C:\Python314\Lib\asyncio\base_events.py", line 40, in <module>
+    from . import events
+KeyboardInterrupt
+INFO:     Started server process [26148]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26148]
+INFO:     Stopping reloader process [27960]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> cd ..
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   backend/app/documents/processor.py
+        modified:   backend/app/main.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        backend/app/api/rag.py
+        backend/app/documents/rag_service.py
+        backend/app/llm/
+        backend/app/schemas/rag.py
+        backend/test_llm.py
+        backend/test_rag_pipeline.py
+        backend/test_rag_prompt.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI> git add .
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI> git commit -m "feat: add authenticated RAG question API"
+[main c1b7b9c] feat: add authenticated RAG question API
+ 13 files changed, 318 insertions(+), 7 deletions(-)
+ create mode 100644 backend/app/api/rag.py
+ create mode 100644 backend/app/documents/rag_service.py
+ create mode 100644 backend/app/llm/__init__.py
+ create mode 100644 backend/app/llm/huggingface_service.py
+ create mode 100644 backend/app/llm/mock_service.py
+ create mode 100644 backend/app/llm/prompt.py
+ create mode 100644 backend/app/llm/service.py
+ create mode 100644 backend/app/schemas/rag.py
+ create mode 100644 backend/test_llm.py
+ create mode 100644 backend/test_rag_pipeline.py
+ create mode 100644 backend/test_rag_prompt.py
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI> cd backend
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload                           
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [25992] using WatchFiles
+INFO:     Started server process [26652]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:7249 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:7249 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9176 - "POST /auth/login HTTP/1.1" 200 OK
+Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 974.66it/s]
+INFO:     127.0.0.1:6114 - "POST /rag/ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:8280 - "POST /rag/ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:5813 - "POST /rag/ask HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26652]
+INFO:     Stopping reloader process [25992]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> pip install -U huggingface_hub
+Requirement already satisfied: huggingface_hub in .\.venv\Lib\site-packages (1.33.0)
+Collecting huggingface_hub
+  Downloading huggingface_hub-2.0.0-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: click<9.0.0,>=8.4.2 in .\.venv\Lib\site-packages (from huggingface_hub) (8.5.0)
+Requirement already satisfied: filelock>=3.10.0 in .\.venv\Lib\site-packages (from huggingface_hub) (4.0.3)
+Requirement already satisfied: fsspec>=2023.5.0 in .\.venv\Lib\site-packages (from huggingface_hub) (2026.9.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.6.0 in .\.venv\Lib\site-packages (from huggingface_hub) (1.6.0)
+Requirement already satisfied: httpx2<3,>=2.0.0 in .\.venv\Lib\site-packages (from huggingface_hub) (2.13.1)
+Requirement already satisfied: packaging>=20.9 in .\.venv\Lib\site-packages (from huggingface_hub) (26.3)
+Requirement already satisfied: pyyaml>=5.1 in .\.venv\Lib\site-packages (from huggingface_hub) (6.0.3)
+Requirement already satisfied: tqdm>=4.42.1 in .\.venv\Lib\site-packages (from huggingface_hub) (4.70.1)
+Requirement already satisfied: typing-extensions>=4.1.0 in .\.venv\Lib\site-packages (from huggingface_hub) (4.16.0)
+Requirement already satisfied: anyio>=4.10 in .\.venv\Lib\site-packages (from httpx2<3,>=2.0.0->huggingface_hub) (4.15.1)
+Requirement already satisfied: httpcore2==2.13.1 in .\.venv\Lib\site-packages (from httpx2<3,>=2.0.0->huggingface_hub) (2.13.1)
+Requirement already satisfied: idna>=3.18 in .\.venv\Lib\site-packages (from httpx2<3,>=2.0.0->huggingface_hub) (3.20)
+Requirement already satisfied: truststore>=0.10 in .\.venv\Lib\site-packages (from httpx2<3,>=2.0.0->huggingface_hub) (0.10.4)
+Requirement already satisfied: h11>=0.16 in .\.venv\Lib\site-packages (from httpcore2==2.13.1->httpx2<3,>=2.0.0->huggingface_hub) (0.16.0)
+Requirement already satisfied: colorama in .\.venv\Lib\site-packages (from tqdm>=4.42.1->huggingface_hub) (0.4.6)
+Downloading huggingface_hub-2.0.0-py3-none-any.whl (828 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 828.5/828.5 kB 5.0 MB/s  0:00:00
+Installing collected packages: huggingface_hub
+  Attempting uninstall: huggingface_hub
+    Found existing installation: huggingface_hub 1.33.0
+    Uninstalling huggingface_hub-1.33.0:
+      Successfully uninstalled huggingface_hub-1.33.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+sentence-transformers 6.1.0 requires huggingface-hub<2.0.0,>=1.3.0, but you have huggingface-hub 2.0.0 which is incompatible.
+tokenizers 0.23.2 requires huggingface-hub<2.0,>=0.16.4, but you have huggingface-hub 2.0.0 which is incompatible.
+transformers 5.17.0 requires huggingface-hub<2.0,>=1.5.0, but you have huggingface-hub 2.0.0 which is incompatible.
+Successfully installed huggingface_hub-2.0.0
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> pip install "huggingface_hub>=1.5.0,<2.0"
+Collecting huggingface_hub<2.0,>=1.5.0
+  Using cached huggingface_hub-1.33.0-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: click<9.0.0,>=8.4.2 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (8.5.0)
+Requirement already satisfied: filelock>=3.10.0 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (4.0.3)
+Requirement already satisfied: fsspec>=2023.5.0 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (2026.9.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.6.0 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (1.6.0)
+Requirement already satisfied: httpx<1,>=0.23.0 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (0.28.1)
+Requirement already satisfied: packaging>=20.9 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (26.3)
+Requirement already satisfied: pyyaml>=5.1 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (6.0.3)
+Requirement already satisfied: tqdm>=4.42.1 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (4.70.1)
+Requirement already satisfied: typing-extensions>=4.1.0 in .\.venv\Lib\site-packages (from huggingface_hub<2.0,>=1.5.0) (4.16.0)
+Requirement already satisfied: anyio in .\.venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub<2.0,>=1.5.0) (4.15.1)
+Requirement already satisfied: certifi in .\.venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub<2.0,>=1.5.0) (2026.7.22)
+Requirement already satisfied: httpcore==1.* in .\.venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub<2.0,>=1.5.0) (1.0.9)
+Requirement already satisfied: idna in .\.venv\Lib\site-packages (from httpx<1,>=0.23.0->huggingface_hub<2.0,>=1.5.0) (3.20)
+Requirement already satisfied: h11>=0.16 in .\.venv\Lib\site-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface_hub<2.0,>=1.5.0) (0.16.0)
+Requirement already satisfied: colorama in .\.venv\Lib\site-packages (from tqdm>=4.42.1->huggingface_hub<2.0,>=1.5.0) (0.4.6)
+Using cached huggingface_hub-1.33.0-py3-none-any.whl (846 kB)
+Installing collected packages: huggingface_hub
+  Attempting uninstall: huggingface_hub
+    Found existing installation: huggingface_hub 2.0.0
+    Uninstalling huggingface_hub-2.0.0:
+      Successfully uninstalled huggingface_hub-2.0.0
+Successfully installed huggingface_hub-1.33.0
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> pip show huggingface_hub
+Name: huggingface_hub
+Version: 1.33.0
+Summary: Client library to download and publish models, datasets and other repos on the huggingface.co hub
+Home-page: https://github.com/huggingface/huggingface_hub
+Author: Hugging Face, Inc.
+Author-email: julien@huggingface.co
+License: Apache-2.0
+Location: C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend\.venv\Lib\site-packages
+Requires: click, filelock, fsspec, hf-xet, httpx, packaging, pyyaml, tqdm, typing-extensions
+Required-by: sentence-transformers, tokenizers, transformers
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python -c "import torch, transformers, sentence_transformers; from huggingface_hub import InferenceClient; print('PyTorch:', torch.__version__); print('Transformers:', transformers.__version__); print('Sentence Transformers:', sentence_transformers.__version__); print('HuggingFace InferenceClient: OK')"
+PyTorch: 2.14.0+cpu
+Transformers: 5.17.0
+Sentence Transformers: 6.1.0
+HuggingFace InferenceClient: OK
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python -c "from app.core.config import settings; print('HF token loaded:', bool(settings.HF_TOKEN)); print('LLM model:', settings.LLM_MODEL)"
+HF token loaded: True
+LLM model: openai/gpt-oss-120b
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> python test_real_llm.py
+Real LLM generation successful
+
+--- RESPONSE ---
+
+EngiSense AI’s purpose is to deliver AI‑driven engineering analysis and insights for design, diagnostics, and optimization.
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> uvicorn app.main:app --reload                                                                                                      
+INFO:     Will watch for changes in these directories: ['C:\\Users\\SHIVAM KUMAR\\target\\PROJECT\\EngiSense-AI\\backend']                                                   
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [12592] using WatchFiles
+INFO:     Started server process [10552]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:9801 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:9801 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14406 - "POST /auth/login HTTP/1.1" 200 OK
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 1247.51it/s]
+INFO:     127.0.0.1:6713 - "POST /rag/ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:3252 - "POST /rag/ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2306 - "POST /rag/ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:2287 - "POST /rag/ask HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10552]
+INFO:     Stopping reloader process [12592]
+(.venv) PS C:\Users\SHIVAM KUMAR\target\PROJECT\EngiSense-AI\backend> 

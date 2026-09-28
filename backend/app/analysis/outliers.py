@@ -7,7 +7,7 @@ def detect_outliers(df: pd.DataFrame) -> dict:
     outliers = {}
 
     for column in numeric_df.columns:
-        series = numeric_df[column]
+        series = numeric_df[column].dropna()
 
         q1 = series.quantile(0.25)
         q3 = series.quantile(0.75)
@@ -21,8 +21,15 @@ def detect_outliers(df: pd.DataFrame) -> dict:
         ]
 
         outliers[column] = {
-            "count": int(len(column_outliers)),
-            "values": column_outliers.tolist(),
+            "observations": int(len(series)),
+            "mean": float(series.mean()),
+            "median": float(series.median()),
+            "minimum": float(series.min()),
+            "maximum": float(series.max()),
+            "outlier_count": int(len(column_outliers)),
+            "outlier_values": column_outliers.tolist(),
+            "lower_bound": float(lower_bound),
+            "upper_bound": float(upper_bound),
         }
 
     return outliers

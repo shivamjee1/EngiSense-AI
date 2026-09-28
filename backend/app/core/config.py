@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
+    HF_TOKEN: str | None = None
+    LLM_MODEL: str = "openai/gpt-oss-120b"
+
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore",
