@@ -8,11 +8,8 @@ ENV PYTHONUNBUFFERED=1
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir \
-        torch==2.14.0 \
-        --index-url https://download.pytorch.org/whl/cpu \
-    && sed '/^torch==2.14.0$/d' requirements.txt > requirements.docker.txt \
-    && pip install --no-cache-dir -r requirements.docker.txt
+    && pip install --no-cache-dir torch==2.14.0 \
+    && pip install --no-cache-dir -r requirements.txt
 
 COPY alembic.ini .
 COPY alembic ./alembic
