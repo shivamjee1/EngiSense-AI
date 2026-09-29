@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     HF_TOKEN: str | None = None
     LLM_MODEL: str = "openai/gpt-oss-120b"
 
+    SUPABASE_URL: str
+    SUPABASE_SECRET_KEY: str
+    SUPABASE_STORAGE_BUCKET: str = "engisense-documents"
+
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore",
